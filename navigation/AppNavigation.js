@@ -3,6 +3,7 @@ import React from "react";
 import HomeScreen from "../screens/HomeScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MovieScreen from "../screens/MovieScreen";
+import PersonScreen from "../screens/PersonScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,11 @@ export default function AppNavigation() {
           name="Movie"
           options={{ headerShown: false }}
           component={MovieScreen}
+        />
+        <Stack.Screen
+          name="Person"
+          options={{ headerShown: false }}
+          component={PersonScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

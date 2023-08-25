@@ -14,12 +14,14 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { styles, theme } from "../theme";
 import { LinearGradient } from "expo-linear-gradient";
 import Cast from "../components/cast";
+import MovieList from "../components/movieList";
 
 var { width, height } = Dimensions.get("window");
 export default function MovieScreen() {
   let movieName = "Ant-Man and the Wasp";
   const navigation = useNavigation();
   const [cast, setCast] = useState([1, 2, 3, 4, 5]);
+  const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5]);
   const [isFavorite, toggleFavorite] = useState(false);
   const { params: item } = useRoute();
   useEffect(() => {
@@ -94,7 +96,9 @@ export default function MovieScreen() {
         </Text>
       </View>
       {/* cast  */}
-      <Cast cast={cast} />
+      <Cast navigation={navigation} cast={cast} />
+      {/* similar movies  */}
+      <MovieList title="Similar Movie" hideSeeAll={true} data={similarMovies} />
     </ScrollView>
   );
 }
