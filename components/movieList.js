@@ -10,6 +10,7 @@ import {
 import React from "react";
 import { styles } from "../theme";
 import { useNavigation } from "@react-navigation/native";
+import { image185 } from "../api/moviedb";
 var { width, height } = Dimensions.get("window");
 export default function MovieList({ title, data, hideSeeAll }) {
   let movieName = "Ant-Man and the Wasp";
@@ -32,6 +33,7 @@ export default function MovieList({ title, data, hideSeeAll }) {
         contentContainerStyle={{ paddingHorizontal: 15 }}
       >
         {data.map((item, index) => {
+          // console.log(item);
           return (
             <TouchableWithoutFeedback
               key={index}
@@ -39,14 +41,16 @@ export default function MovieList({ title, data, hideSeeAll }) {
             >
               <View className="space-y-1 mr-4">
                 <Image
-                  source={require("../assets/images/moviePoster2.png")}
+                  source={{ uri: image185(item.poster_path) }}
+                  // source={require("../assets/images/moviePoster2.png")}
                   className="rounded-3xl"
                   style={{ width: width * 0.33, height: height * 0.22 }}
                 />
                 <Text className="text-neutral-300 ml-1">
-                  {movieName.length > 14
-                    ? movieName.slice(0, 14) + "..."
-                    : movieName}
+                  {/* {const movieName=item.title} */}
+                  {item.title.length > 14
+                    ? item.title.slice(0, 14) + "..."
+                    : item.title}
                 </Text>
               </View>
             </TouchableWithoutFeedback>
