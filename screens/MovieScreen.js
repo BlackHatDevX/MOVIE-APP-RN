@@ -16,19 +16,45 @@ import { LinearGradient } from "expo-linear-gradient";
 import Cast from "../components/cast";
 import MovieList from "../components/movieList";
 import Loading from "../components/loading";
+import {
+  fallbackMoviePoster,
+  fetchMovieCredits,
+  fetchMovieDetails,
+  fetchSimilarMovies,
+  image500,
+} from "../api/moviedb";
 
 var { width, height } = Dimensions.get("window");
 export default function MovieScreen() {
   let movieName = "Ant-Man and the Wasp";
   const navigation = useNavigation();
-  const [cast, setCast] = useState([1, 2, 3, 4, 5]);
-  const [similarMovies, setSimilarMovies] = useState([1, 2, 3, 4, 5]);
+  const [cast, setCast] = useState([]);
+  const [similarMovies, setSimilarMovies] = useState([]);
   const [isFavorite, toggleFavorite] = useState(false);
   const { params: item } = useRoute();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [movie, setMovie] = useState({});
   useEffect(() => {
     //call the movie details api
+    // console.log(item.id);
+    setLoading(true);
+    getMovieDetails(item.id);
+    getMovieCredits(item.id);
+    getSimilarMovies(item.id);
   }, [item]);
+  const getMovieDetails = async (id) => {
+    const data = await fetchMovieDetails(id);
+    if (data) setMovie(data);
+    setLoading(false);
+  };
+  const getMovieCredits = async (id) => {
+    const data = await fetchMovieCredits(id);
+    if (data && data.cast) setCast(data.cast);
+  };
+  const getSimilarMovies = async (id) => {
+    const data = await fetchSimilarMovies(id);
+    if (data && data.results) setSimilarMovies(data.results);
+  };
   return (
     <ScrollView
       contentContainerStyle={{ paddingBottom: 20 }}
@@ -57,7 +83,10 @@ export default function MovieScreen() {
         ) : (
           <View>
             <Image
-              source={require("../assets/images/moviePoster2.png")}
+              source={{
+                uri: image500(movie?.poster_path) || fallbackMoviePoster,
+              }}
+              // source={require("../assets/images/moviePoster2.png")}
               style={{ width, height: height * 0.55 }}
             />
             <LinearGradient
@@ -77,35 +106,44 @@ export default function MovieScreen() {
       >
         {/* movie title  */}
         <Text className="text-white text-center text-3xl font-bold tracking-wider">
-          {movieName}
+          {movie?.title}
         </Text>
         {/* stats release runtime  */}
-        <Text className="text-neutral-400 font-semibold text-base text-center">
-          Released • 2020 • 170 min
-        </Text>
+        {movie?.id ? (
+          <Text className="text-neutral-400 font-semibold text-base text-center">
+            {movie?.status} • {movie?.release_date.split("-")[0]} •{" "}
+            {movie.runtime} min
+          </Text>
+        ) : null}
         {/* genres  */}
         <View className="flex-row justify-center mx-4 space-x-2">
-          <Text className="text-neutral-400 font-semibold text-base text-center">
-            Action •
-          </Text>
-          <Text className="text-neutral-400 font-semibold text-base text-center">
-            Thrill •
-          </Text>
-          <Text className="text-neutral-400 font-semibold text-base text-center">
-            Comedy
-          </Text>
+          {movie?.genres?.map((genre, index) => {
+            let showDot = index + 1 != movie.genres.length;
+            return (
+              <Text
+                key={index}
+                className="text-neutral-400 font-semibold text-base text-center"
+              >
+                {genre.name} {showDot ? "•" : null}
+              </Text>
+            );
+          })}
         </View>
         {/* description  */}
         <Text className="text-neutral-400 mx-4 tracking-wide">
-          Despite being under house arrest, Scott Lang, along with the Wasp,
-          sets out to help Dr Hank Pym to enter the quantum realm as they face
-          new enemies along the way.
+          {movie?.overview}
         </Text>
       </View>
       {/* cast  */}
-      <Cast navigation={navigation} cast={cast} />
+      {cast.length > 0 && <Cast navigation={navigation} cast={cast} />}
       {/* similar movies  */}
-      {/* <MovieList title="Similar Movie" hideSeeAll={true} data={similarMovies} /> */}
+      {similarMovies.length > 0 && (
+        <MovieList
+          title="Similar Movie"
+          hideSeeAll={true}
+          data={similarMovies}
+        />
+      )}
     </ScrollView>
   );
 }

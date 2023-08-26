@@ -76,9 +76,13 @@ export default function HomeScreen() {
           {/* Trending movie carousel  */}
           {trending.length > 0 && <TrendingMovies data={trending} />}
           {/* upcoming movies row  */}
-          <MovieList title={"Upcoming"} data={upcoming} />
+          {upcoming.length > 0 && (
+            <MovieList title={"Upcoming"} data={upcoming} />
+          )}
           {/* upcoming movies row  */}
-          <MovieList title={"Top Rated Movies"} data={topRated} />
+          {topRated.length > 0 && (
+            <MovieList title={"Top Rated Movies"} data={topRated} />
+          )}
         </ScrollView>
       )}
     </View>
