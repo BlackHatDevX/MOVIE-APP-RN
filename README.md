@@ -22,7 +22,7 @@
 ## Installation and Usage
 
 1. Clone the repository:
-   ```
+  ```
    git clone https://github.com/BlackHatDevX/MOVIE-APP-RN.git
    ```
 3. Navigate to the project directory:
