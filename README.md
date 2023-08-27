@@ -38,7 +38,7 @@ For iOS, use the device camera to scan the QR code.
 To build the app as an Android App Bundle (AAB):
 
 1. Install EAS (Expo Application Services):
-```sudo npm install -g eas```
+`sudo npm install -g eas`
 2. Build the AAB:
 ```eas build --platform android```
 3. To convert the AAB to APK:
