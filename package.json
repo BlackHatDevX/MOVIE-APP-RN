@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "postinstall": "patch-package",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -25,7 +24,6 @@
     "expo-status-bar": "~1.6.0",
     "lodash": "^4.17.21",
     "nativewind": "^2.0.11",
-    "patch-package": "^8.0.0",
     "react": "18.2.0",
     "react-native": "0.72.3",
     "react-native-gesture-handler": "^2.12.1",
