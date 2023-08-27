@@ -23,6 +23,7 @@ import {
   fetchSimilarMovies,
   image500,
 } from "../api/moviedb";
+import Footer from "../components/footer";
 
 var { width, height } = Dimensions.get("window");
 export default function MovieScreen() {
@@ -144,6 +145,7 @@ export default function MovieScreen() {
           data={similarMovies}
         />
       )}
+      <Footer />
     </ScrollView>
   );
 }

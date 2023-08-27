@@ -21,6 +21,7 @@ import {
   fetchPersonMovies,
   image342,
 } from "../api/moviedb";
+import Footer from "../components/footer";
 
 var { width, height } = Dimensions.get("window");
 
@@ -136,6 +137,7 @@ export default function PersonScreen() {
           </View>
         </View>
       )}
+      <Footer />
     </ScrollView>
   );
 }

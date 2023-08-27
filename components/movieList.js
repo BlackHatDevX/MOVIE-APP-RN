@@ -13,7 +13,6 @@ import { useNavigation } from "@react-navigation/native";
 import { fallbackMoviePoster, image185 } from "../api/moviedb";
 var { width, height } = Dimensions.get("window");
 export default function MovieList({ title, data, hideSeeAll }) {
-  let movieName = "Ant-Man and the Wasp";
   const navigation = useNavigation();
   return (
     <View className="mb-8 space-y-4">

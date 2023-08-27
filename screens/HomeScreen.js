@@ -2,10 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  Bars3CenterLeftIcon,
-  MagnifyingGlassIcon,
-} from "react-native-heroicons/outline";
+import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { styles } from "../theme";
 import TrendingMovies from "../components/trendingMovies";
 import MovieList from "../components/movieList";
@@ -16,6 +13,7 @@ import {
   fetchTrendingMovies,
   fetchUpcomingMovies,
 } from "../api/moviedb";
+import Footer from "../components/footer";
 
 export default function HomeScreen() {
   const [trending, setTrending] = useState([]);
@@ -55,12 +53,15 @@ export default function HomeScreen() {
       <SafeAreaView>
         <StatusBar style="light"></StatusBar>
         <View className="flex-row justify-between items-center mx-4">
-          <Bars3CenterLeftIcon size="30" strokeWidth={2} color="white" />
-          <Text className="text-white text-3xl font-bold">
+          {/* <Bars3CenterLeftIcon size="30" strokeWidth={2} color="white" /> */}
+          <Text className="text-white text-3xl mx-auto font-bold">
             <Text style={styles.text}>M</Text>
             ovies
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Search")}>
+          <TouchableOpacity
+            className="absolute right-0"
+            onPress={() => navigation.navigate("Search")}
+          >
             <MagnifyingGlassIcon size="30" strokeWidth={2} color="white" />
           </TouchableOpacity>
         </View>
@@ -77,12 +78,17 @@ export default function HomeScreen() {
           {trending.length > 0 && <TrendingMovies data={trending} />}
           {/* upcoming movies row  */}
           {upcoming.length > 0 && (
-            <MovieList title={"Upcoming"} data={upcoming} />
+            <MovieList title={"Upcoming"} data={upcoming} hideSeeAll={true} />
           )}
           {/* upcoming movies row  */}
           {topRated.length > 0 && (
-            <MovieList title={"Top Rated Movies"} data={topRated} />
+            <MovieList
+              title={"Top Rated Movies"}
+              data={topRated}
+              hideSeeAll={true}
+            />
           )}
+          <Footer />
         </ScrollView>
       )}
     </View>
