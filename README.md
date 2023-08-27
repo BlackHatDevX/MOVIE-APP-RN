@@ -15,9 +15,10 @@
 
 ## Screenshots
 
-![Screenshot 1](screenshots/screenshot1.png)
-![Screenshot 2](screenshots/screenshot2.png)
-![Screenshot 3](screenshots/screenshot3.png)
+![HiShoot_20230827_161354](https://github.com/BlackHatDevX/MOVIE-APP-RN/assets/91268029/79a28861-0c12-42f6-a439-e8890024ef90)
+![HiShoot_20230827_161414](https://github.com/BlackHatDevX/MOVIE-APP-RN/assets/91268029/27150ea0-6ce4-42a2-b6f0-8fa1793f502b)
+![HiShoot_20230827_161700](https://github.com/BlackHatDevX/MOVIE-APP-RN/assets/91268029/8f3b997d-5079-4d27-85b5-0ea7e27d1a35)
+
 
 ## Installation and Usage
 
