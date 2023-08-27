@@ -1,6 +1,7 @@
 # Movies Dash - React Native App
 
-![Movies Dash Banner](app_banner.png)
+![Movies Dash Banner](https://github.com/BlackHatDevX/MOVIE-APP-RN/assets/91268029/1af8e7dd-bfa0-42dc-9da9-7fa0b8eea6d6)
+
 
 **Movies Dash** is a sleek and feature-rich React Native app that allows users to explore movies, view details, search for movies, and more. It offers a beautiful user interface and integrates various functionalities using the power of React Native.
 
