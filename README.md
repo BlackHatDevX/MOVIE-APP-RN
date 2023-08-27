@@ -22,14 +22,22 @@
 ## Installation and Usage
 
 1. Clone the repository:
-   ```git clone https://github.com/BlackHatDevX/MOVIE-APP-RN.git```
-2. Navigate to the project directory:
-  ```cd MOVIE-APP-RN```
-3. Install dependencies using Yarn:
-  ```yarn install```
-4. Start the development server:
-  ```yarn start```
-5. Install the Expo Go app on your Android device. Scan the QR code displayed in the terminal using Expo Go.
+   ```
+   git clone https://github.com/BlackHatDevX/MOVIE-APP-RN.git
+   ```
+3. Navigate to the project directory:
+  ```
+   cd MOVIE-APP-RN
+```
+5. Install dependencies using Yarn:
+  ```
+   yarn install
+```
+7. Start the development server:
+  ```
+   yarn start
+```
+9. Install the Expo Go app on your Android device. Scan the QR code displayed in the terminal using Expo Go.
    
 For iOS, use the device camera to scan the QR code.
 
@@ -38,10 +46,16 @@ For iOS, use the device camera to scan the QR code.
 To build the app as an Android App Bundle (AAB):
 
 1. Install EAS (Expo Application Services):
-`sudo npm install -g eas`
-2. Build the AAB:
-```eas build --platform android```
-3. To convert the AAB to APK:
+   ```
+   sudo npm install -g eas
+   ```
+
+3. Build the AAB:
+   ```
+   eas build --platform android
+   ```
+
+5. To convert the AAB to APK:
     1. Download the "AAB to APK" app from the Play Store.
     2. Follow the app's instructions to convert the AAB to APK format.
 
