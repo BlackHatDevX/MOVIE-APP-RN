@@ -55,8 +55,8 @@ export default function HomeScreen() {
         <View className="flex-row justify-between items-center mx-4">
           {/* <Bars3CenterLeftIcon size="30" strokeWidth={2} color="white" /> */}
           <Text className="text-white text-3xl mx-auto font-bold">
-            <Text style={styles.text}>M</Text>
-            ovies
+            <Text style={styles.text}>Movie </Text>
+            Dash
           </Text>
           <TouchableOpacity
             className="absolute right-0"
